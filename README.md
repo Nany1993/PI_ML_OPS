@@ -30,41 +30,45 @@
 
 * [Proceso del ETL](ETL.py)
 * [Análisis Exploratorio de los datos](EDA.ipynb)
-* [Deployment](url:)
+* [Deployment](https://nany1993-pi-ml-ops.onrender.com/docs)
 * [Video](url: )
 
 ## Requerimientos
 
-* Algunos campos, como belongs_to_collection, production_companies y otros (ver diccionario de datos) están anidados, esto es o bien tienen un diccionario o una lista como valores en cada fila, ¡deberán desanidarlos para poder y unirlos al dataset de nuevo hacer alguna de las consultas de la API! O bien buscar la manera de acceder a esos datos sin desanidarlos.
+* *Algunos campos, como belongs_to_collection, production_companies y otros (ver diccionario de datos) están anidados, esto es o bien tienen un diccionario o una lista como valores en cada fila, ¡deberán desanidarlos para poder y unirlos al dataset de nuevo hacer alguna de las consultas de la API! O bien buscar la manera de acceder a esos datos sin desanidarlos*.
 
-* Los valores nulos de los campos revenue, budget deben ser rellenados por el número 0.
+* *Los valores nulos de los campos revenue, budget deben ser rellenados por el número 0*.
 
-* Los valores nulos del campo release date deben eliminarse.
+* *Los valores nulos del campo release date deben eliminarse.*
 
-* De haber fechas, deberán tener el formato AAAA-mm-dd, además deberán crear la columna release_year donde extraerán el año de la fecha de estreno.
+* *De haber fechas, deberán tener el formato AAAA-mm-dd, además deberán crear la columna release_year donde extraerán el año de la fecha de estreno.*
 
-* Crear la columna con el retorno de inversión, llamada return con los campos revenue y budget, dividiendo estas dos últimas revenue / budget, cuando no hay datos disponibles para calcularlo, deberá tomar el valor 0.
+* *Crear la columna con el retorno de inversión, llamada return con los campos revenue y budget, dividiendo estas dos últimas revenue / budget, cuando no hay datos disponibles para calcularlo, deberá tomar el valor 0.*
 
-* Eliminar las columnas que no serán utilizadas, video,imdb_id,adult,original_title,vote_count,poster_path y homepage.
+* *Eliminar las columnas que no serán utilizadas, video,imdb_id,adult,original_title,vote_count,poster_path y homepage.*
 
 
 ## Endpoints de la Api
 
 *La API cuenta con los siguientes endpoints:*
 
-1-  [Cantidad de peliculas estrenadas historicamente por mes](http://127.0.0.1:8000/docs#/default/peliculas_mes_peliculas_mes__mes__get)
+1-  [Cantidad de peliculas estrenadas historicamente por mes](https://nany1993-pi-ml-ops.onrender.com/docs#/default/peliculas_mes_peliculas_mes__mes__get)
 
-2-  [Cantidad de peliculas estrenadas historicamente por día](http://127.0.0.1:8000/docs#/default/peliculas_dia_peliculas_dia__dia__get)
+2-  [Cantidad de peliculas estrenadas historicamente por día](https://nany1993-pi-ml-ops.onrender.com/docs#/default/peliculas_dia_peliculas_dia__dia__get)
 
-3-  [Cantidad de peliculas estrenadas por franquicia - con su ganancia](http://127.0.0.1:8000/docs#/default/franquicia_franquicia__franquicia__get)
+3-  [Cantidad de peliculas estrenadas por franquicia - con su ganancia](https://nany1993-pi-ml-ops.onrender.com/docs#/default/franquicia_franquicia__franquicia__get)
 
-4-  [Cantidad de peliculas estrenadas por país](http://127.0.0.1:8000/docs#/default/peliculas_pais_peliculas_pais__pais__get)
+4-  [Cantidad de peliculas estrenadas por país](https://nany1993-pi-ml-ops.onrender.com/docs#/default/peliculas_pais_peliculas_pais__pais__get)
 
-5-  [Cantidad de peliculas estrenadas y ganancia por productora](http://127.0.0.1:8000/docs#/default/productoras_productoras__productora__get)
+5-  [Cantidad de peliculas estrenadas y ganancia por productora](https://nany1993-pi-ml-ops.onrender.com/docs#/default/productoras_productoras__productora__get)
 
-6-  [Retorno de la inversión, ganancia y año en que se lanzo una pelicula en especifico](http://127.0.0.1:8000/docs#/default/retorno_retorno__pelicula__get)
+6-  [Retorno de la inversión, ganancia y año en que se lanzo una pelicula en especifico](https://nany1993-pi-ml-ops.onrender.com/docs#/default/retorno_retorno__pelicula__get)
 
-7-  [Sistema de recomendación de peliculas similares](http://127.0.0.1:8000/docs#/default/recomendacion_recomendacion__titulo__get)
+7-  [Sistema de recomendación de peliculas similares](https://nany1993-pi-ml-ops.onrender.com/docs#/default/recomendacion_recomendacion__titulo__get)
+
+##Deployment
+
+*Para realizar el deploy de esta aplicación se utilizo FASTAPI y RENDER.*
 
 
 
