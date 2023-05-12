@@ -3,10 +3,6 @@ import  pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-if __name__ == '__main__':
-    # Código a ejecutar solo si se llama directamente al archivo
-    pass
-
 app =FastAPI(
     
     title="Lista de scores de peliculas",
