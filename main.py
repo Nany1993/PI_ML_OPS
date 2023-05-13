@@ -71,7 +71,8 @@ def productoras(productora:str):
     productora = productora.title()
     ganancia_total = 0
     cantidad = 0
-    lista = df_movies["production_companies"]
+    lista = list(df_movies["production_companies"].dropna())
+    df_movies["revenue"] = pd.to_numeric(df_movies["revenue"], errors='coerce')
     for i in range(len(lista)):
         if lista[i] is None:
             continue
@@ -83,8 +84,6 @@ def productoras(productora:str):
             cantidad += 1
             ganancia = df_movies["revenue"][i]
             ganancia_total += ganancia
-    
-
     return {'productora':productora, 'ganancia_total':ganancia_total, 'cantidad':cantidad}
 
 #Funcion 6 - inversion, ganancia, retorno, año por pelicula

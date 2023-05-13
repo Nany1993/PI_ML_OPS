@@ -52,21 +52,21 @@
 
 *La API cuenta con los siguientes endpoints:*
 
-1-  [Cantidad de peliculas estrenadas historicamente por mes](https://nany1993-pi-ml-ops.onrender.com/docs#/default/peliculas_mes_peliculas_mes__mes__get)
+1-  [Cantidad de peliculas estrenadas historicamente por mes](https://nany1993-pi-ml-ops.onrender.com/peliculas_mes/enero)
 
-2-  [Cantidad de peliculas estrenadas historicamente por día](https://nany1993-pi-ml-ops.onrender.com/docs#/default/peliculas_dia_peliculas_dia__dia__get)
+2-  [Cantidad de peliculas estrenadas historicamente por día](https://nany1993-pi-ml-ops.onrender.com/peliculas_dia/lunes)
 
-3-  [Cantidad de peliculas estrenadas por franquicia - con su ganancia](https://nany1993-pi-ml-ops.onrender.com/docs#/default/franquicia_franquicia__franquicia__get)
+3-  [Cantidad de peliculas estrenadas por franquicia - con su ganancia](https://nany1993-pi-ml-ops.onrender.com/franquicia)
 
-4-  [Cantidad de peliculas estrenadas por país](https://nany1993-pi-ml-ops.onrender.com/docs#/default/peliculas_pais_peliculas_pais__pais__get)
+4-  [Cantidad de peliculas estrenadas por país](https://nany1993-pi-ml-ops.onrender.com/peliculas_pais/United%20Kingdom)
 
-5-  [Cantidad de peliculas estrenadas y ganancia por productora](https://nany1993-pi-ml-ops.onrender.com/docs#/default/productoras_productoras__productora__get)
+5-  [Cantidad de peliculas estrenadas y ganancia por productora](https://nany1993-pi-ml-ops.onrender.com/productoras/Pixar-Animation-Studios)
 
-6-  [Retorno de la inversión, ganancia y año en que se lanzo una pelicula en especifico](https://nany1993-pi-ml-ops.onrender.com/docs#/default/retorno_retorno__pelicula__get)
+6-  [Retorno de la inversión, ganancia y año en que se lanzo una pelicula en especifico](https://nany1993-pi-ml-ops.onrender.com/retorno)
 
-7-  [Sistema de recomendación de peliculas similares](https://nany1993-pi-ml-ops.onrender.com/docs#/default/recomendacion_recomendacion__titulo__get)
+7-  [Sistema de recomendación de peliculas similares](https://nany1993-pi-ml-ops.onrender.com/recomendacion/Titanic)
 
-##Deployment
+## Deployment
 
 *Para realizar el deploy de esta aplicación se utilizo FASTAPI y RENDER.*
 
