@@ -39,6 +39,7 @@ def peliculas_dia(dia:str):
 #Funcion 3 cantidad y ganancia por franquicia
 @app.get('/franquicia/{franquicia}')
 def franquicia(franquicia:str):
+    '''Se ingresa la franquicia, retornando la cantidad de peliculas, ganancia total y promedio'''
     franquicia = franquicia.title()
     cantidad = len(df_movies.loc[df_movies["belongs_to_collection"] == franquicia])
     ganancia = df_movies["revenue"].loc[df_movies["belongs_to_collection"] == franquicia].sum()
@@ -50,7 +51,8 @@ def franquicia(franquicia:str):
 
 # Funcion 4 - peliculas por pais
 @app.get('/peliculas_pais/{pais}')
-def peliculas_pais(pais:str): 
+def peliculas_pais(pais:str):
+    '''Ingresas el pais, retornando la cantidad de peliculas producidas en el mismo''' 
     pais = pais.title()
     cantidad = 0
     lista = df_movies["production_countries"]
@@ -66,17 +68,17 @@ def peliculas_pais(pais:str):
 
 # Funcion 5 - cantidad, ganancia por productoras
 @app.get('/productoras/{productora}')
-def productoras(productora:str): 
-    
+# Funcion 5 - cantidad, ganancia por productoras
+def productoras(productora): 
+    '''Ingresas la productora, retornando la ganancia toal y la cantidad de peliculas que produjeron'''
     productora = productora.title()
     ganancia_total = 0
     cantidad = 0
-    lista = list(df_movies["production_companies"].dropna(inplace=True))
-    df_movies["revenue"] = pd.to_numeric(df_movies["revenue"], errors='coerce')
+    lista = df_movies["production_companies"]
     for i in range(len(lista)):
         if lista[i] is None:
             continue
-        if lista[i] is not list and list[i] == productora:
+        if type(lista[i]) is not list and list[i] == productora:
             cantidad += 1
             ganancia = df_movies["revenue"][i]
             ganancia_total += ganancia
@@ -84,24 +86,36 @@ def productoras(productora:str):
             cantidad += 1
             ganancia = df_movies["revenue"][i]
             ganancia_total += ganancia
-    return {'productora':productora, 'ganancia_total':ganancia_total, 'cantidad':cantidad}
+    
+
+    return {'productora':productora, 
+            'ganancia_total':ganancia_total, 
+            'cantidad':cantidad}
+
+productoras("Pixar Animation Studios")
 
 #Funcion 6 - inversion, ganancia, retorno, año por pelicula
 @app.get('/retorno/{pelicula}')
 def retorno(pelicula:str):
+    "ingresas la pelicula, retornando la inversion, la ganancia, el retorno y el año en que se lanzo"
     pelicula_df = df_movies.loc[df_movies["title"] == pelicula.title()] 
     inversion = pelicula_df["budget"].iloc[0].item()
     ganancia = pelicula_df["revenue"].iloc[0].item()
     retorno = pelicula_df["return"].iloc[0].item()
     año = pelicula_df["release_year"].iloc[0].item()
     
-    return {'pelicula':pelicula, 'inversion':inversion, 'ganacia':ganancia,'retorno':retorno, 'anio':año}
+    return {'pelicula':pelicula, 
+            'inversion':inversion, 
+            'ganacia':ganancia,
+            'retorno':retorno, 
+            'anio':año}
 
 
 #Funcion 7 - Sistema de recomendacion
 @app.get('/recomendacion/{titulo}')
 def recomendacion(titulo:str):
-    
+    '''Ingresas un nombre de pelicula y te recomienda las similares en una lista'''
+
     titulo = titulo.title()
     # Eliminar valores nulos en el DataFrame
     df_movies.dropna(subset=['title'], inplace=True)
