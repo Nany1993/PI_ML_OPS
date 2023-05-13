@@ -88,11 +88,12 @@ def productoras(productora:str):
 
 #Funcion 6 - inversion, ganancia, retorno, año por pelicula
 @app.get('/retorno/{pelicula}')
-def retorno(pelicula:str): 
-    inversion = df_movies["budget"][df_movies["title"] == pelicula]
-    ganancia = df_movies["revenue"][df_movies["title"] == pelicula]
-    retorno = df_movies["return"][df_movies["title"] == pelicula]
-    año = df_movies["release_year"][df_movies["title"] == pelicula]
+def retorno(pelicula:str):
+    pelicula_df = df_movies.loc[df_movies["title"] == pelicula.title()] 
+    inversion = pelicula_df["budget"].iloc[0].item()
+    ganancia = pelicula_df["revenue"].iloc[0].item()
+    retorno = pelicula_df["return"].iloc[0].item()
+    año = pelicula_df["release_year"].iloc[0].item()
     
     return {'pelicula':pelicula, 'inversion':inversion, 'ganacia':ganancia,'retorno':retorno, 'anio':año}
 
