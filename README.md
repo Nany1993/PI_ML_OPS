@@ -21,6 +21,7 @@
 * ETL.py --> Script de python con las funciones para realizar el ETL
 * README --> Introducción del proyecto e Instrucciones de uso
 * main.py --> El código de la API, con las consultas para los endpoints y funciones auxiliares
+* Test_consultas --> permite probar el funcionamiento de la API
 
 ## Evaluación del cumplimiento de los objetivos
 
