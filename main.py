@@ -71,7 +71,7 @@ def productoras(productora:str):
     productora = productora.title()
     ganancia_total = 0
     cantidad = 0
-    lista = list(df_movies["production_companies"].dropna())
+    lista = list(df_movies["production_companies"].dropna(inplace=True))
     df_movies["revenue"] = pd.to_numeric(df_movies["revenue"], errors='coerce')
     for i in range(len(lista)):
         if lista[i] is None:
