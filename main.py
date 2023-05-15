@@ -20,8 +20,11 @@ def index():
 #Función 1 - Peliculas por mes
 @app.get('/peliculas_mes/{mes}')
 def peliculas_mes(mes:str):
-    '''Se ingresa el mes y la funcion retorna la cantidad de peliculas que se estrenaron 
-    ese mes historicamente'''
+    '''Se ingresa el mes y la funcion retorna la cantidad de peliculas que se estrenaron ese mes historicamente'''
+    '''Ejemplo:
+                Entrada: Enero 
+                
+                Salida: {'mes': 'Enero', 'cantidad': 5865}'''
     mes = mes.title()
     cantidad = len(df_movies.loc[df_movies['month'] == mes, 'title'])
     return {'mes':mes, 'cantidad':cantidad}
@@ -30,9 +33,12 @@ def peliculas_mes(mes:str):
 #Función 2 - Peliculas por Día
 @app.get('/peliculas_dia/{dia}')
 def peliculas_dia(dia:str):
-    '''Se ingresa el dia y la funcion retorna la cantidad de peliculas que se estrenaron 
-    ese dia historicamente'''
-    dia = dia.title()
+    '''Se ingresa el dia y la funcion retorna la cantidad de peliculas que se estrenaron ese dia historicamente'''
+    '''Ejemplo:
+                Entrada: Martes
+                
+                Salida: {'dia': 'Martes', 'cantidad': 4616'''
+    a = dia.title()
     cantidad = len(df_movies.loc[df_movies['day'] == dia, 'title'])
     return {'dia':dia, 'cantidad':cantidad}
 
@@ -40,6 +46,14 @@ def peliculas_dia(dia:str):
 @app.get('/franquicia/{franquicia}')
 def franquicia(franquicia:str):
     '''Se ingresa la franquicia, retornando la cantidad de peliculas, ganancia total y promedio'''
+    '''Ejemplo:
+                Entrada: Toy Story Collection
+                
+                Salida: 
+                {'franquicia': 'Toy Story Collection', 
+                'cantidad': 3, 
+                'ganancia_total': 1937890605.0, 
+                'ganancia_promedio': 645963535.0}'''
     franquicia = franquicia.title()
     cantidad = len(df_movies.loc[df_movies["belongs_to_collection"] == franquicia])
     ganancia = df_movies["revenue"].loc[df_movies["belongs_to_collection"] == franquicia].sum()
@@ -47,12 +61,19 @@ def franquicia(franquicia:str):
         return 'Información inexistente'
     else:
         ganancia_promedio = ganancia/cantidad
-        return {'franquicia':franquicia, 'cantidad':cantidad, 'ganancia_total':ganancia, 'ganancia_promedio':ganancia_promedio}
+        return {'franquicia':franquicia, 
+                'cantidad':cantidad, 
+                'ganancia_total':ganancia, 
+                'ganancia_promedio':ganancia_promedio}
 
 # Funcion 4 - peliculas por pais
 @app.get('/peliculas_pais/{pais}')
 def peliculas_pais(pais:str):
     '''Ingresas el pais, retornando la cantidad de peliculas producidas en el mismo''' 
+    '''Ejemplo:
+                Entrada: United Kingdom
+                
+                Salida: {'pais': 'United Kingdom', 'cantidad': 4087}'''
     pais = pais.title()
     cantidad = 0
     lista = df_movies["production_countries"]
@@ -71,6 +92,14 @@ def peliculas_pais(pais:str):
 # Funcion 5 - cantidad, ganancia por productoras
 def productoras(productora): 
     '''Ingresas la productora, retornando la ganancia toal y la cantidad de peliculas que produjeron'''
+    '''Ejemplo: 
+                Entrada: Pixar Animation Studios
+                
+                Salida: 
+                {'productora': 'Pixar Animation Studios', 
+                'ganancia_total': 373554033.0, 
+                'cantidad': 1}
+    '''
     productora = productora.title()
     ganancia_total = 0
     cantidad = 0
@@ -97,6 +126,15 @@ productoras("Pixar Animation Studios")
 @app.get('/retorno/{pelicula}')
 def retorno(pelicula:str):
     "ingresas la pelicula, retornando la inversion, la ganancia, el retorno y el año en que se lanzo"
+    '''Ejemplo:
+                Entrada: Toy Story
+                
+                Salida:
+                {'pelicula': 'Toy Story', 
+                'inversion': 30000000.0, 
+                'ganacia': 373554033.0, 
+                'retorno': 12.4518011, 'anio': 1995}
+    '''
     pelicula_df = df_movies.loc[df_movies["title"] == pelicula.title()] 
     inversion = pelicula_df["budget"].iloc[0].item()
     ganancia = pelicula_df["revenue"].iloc[0].item()
