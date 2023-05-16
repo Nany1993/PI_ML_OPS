@@ -32,7 +32,7 @@
 * [Proceso del ETL](ETL.py)
 * [Análisis Exploratorio de los datos](EDA.ipynb)
 * [Deployment](https://nany1993-pi-ml-ops.onrender.com/docs)
-* [Video](https://youtu.be/LWEmCj42UCM)
+* [Video](https://www.youtube.com/watch?v=LWEmCj42UCM)
 
 ## Requerimientos
 
